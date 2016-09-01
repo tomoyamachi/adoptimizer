@@ -1,0 +1,12 @@
+FROM mysql:5.6
+
+# utf8サポート
+RUN { \
+      echo '[mysqld]'; \
+      echo 'skip-character-set-client-handshake'; \
+      echo 'character-set-server=utf8'; \
+      echo 'collation-server=utf8_general_ci'; \
+      echo 'init-connect = SET NAMES utf8'; \
+      echo '[client]'; \
+      echo 'default-character-set=utf8'; \
+} > /etc/mysql/conf.d/charset.cnf
