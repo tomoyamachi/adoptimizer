@@ -52,6 +52,8 @@ $countQuery = 'SELECT * FROM '.$table.' WHERE id;';
 $result = $importPdo->executeQuery($countQuery);
 
 
+header("Content-type: application/x-javascript");
+
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    var_dump($row);
+    echo sprintf("document.write('%s');",$row['tag']);
 }
